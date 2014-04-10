@@ -102,6 +102,18 @@ public class Property {
             return this;
         }
 
+        public PropertyBuilder keyAnnotation(String value){
+            property.annotationKey = value;
+            property.entity.setHasKeyAnnotation(true);
+            return this;
+        }
+
+        public PropertyBuilder jsonStringAnnotation(){
+            property.hasJsonStringAnnotation = true;
+            property.entity.setHasJsonStringAnnotation(true);
+            return this;
+        }
+
         public Property getProperty() {
             return property;
         }
@@ -122,6 +134,9 @@ public class Property {
 
     private boolean unique;
     private boolean notNull;
+
+    private String annotationKey;
+    private boolean hasJsonStringAnnotation;
 
     /** Initialized in 2nd pass */
     private String constraints;
@@ -187,6 +202,22 @@ public class Property {
 
     public void setOrdinal(int ordinal) {
         this.ordinal = ordinal;
+    }
+
+    public String getAnnotationKey() {
+        return annotationKey;
+    }
+
+    public void setAnnotationKey(String annotationKey) {
+        this.annotationKey = annotationKey;
+    }
+
+    public boolean isHasJsonStringAnnotation() {
+        return hasJsonStringAnnotation;
+    }
+
+    public void setHasJsonStringAnnotation(boolean hasJsonStringAnnotation) {
+        this.hasJsonStringAnnotation = hasJsonStringAnnotation;
     }
 
     public Entity getEntity() {

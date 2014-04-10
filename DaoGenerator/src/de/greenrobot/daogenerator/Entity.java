@@ -67,6 +67,8 @@ public class Entity {
     private boolean skipTableCreation;
     private Boolean active;
     private Boolean hasKeepSections;
+    private Boolean hasKeyAnnotation = false;
+    private Boolean hasJsonStringAnnotation = false;
 
     Entity(Schema schema, String className) {
         this.schema = schema;
@@ -397,6 +399,22 @@ public class Entity {
 
     public Boolean getHasKeepSections() {
         return hasKeepSections;
+    }
+
+    public Boolean getHasKeyAnnotation() {
+        return hasKeyAnnotation;
+    }
+
+    public void setHasKeyAnnotation(Boolean hasKeyAnnotation) {
+        this.hasKeyAnnotation = hasKeyAnnotation;
+    }
+
+    public Boolean getHasJsonStringAnnotation() {
+        return hasJsonStringAnnotation;
+    }
+
+    public void setHasJsonStringAnnotation(Boolean hasJsonStringAnnotation) {
+        this.hasJsonStringAnnotation = hasJsonStringAnnotation;
     }
 
     public Collection<String> getAdditionalImportsEntity() {

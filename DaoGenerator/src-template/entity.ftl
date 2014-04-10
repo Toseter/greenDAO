@@ -30,6 +30,14 @@ import ${schema.defaultJavaPackageDao}.DaoSession;
 import de.greenrobot.dao.DaoException;
 
 </#if>
+
+<#if entity.hasKeyAnnotation>
+import com.google.api.client.util.Key;
+</#if>
+<#if entity.hasJsonStringAnnotation>
+import com.google.api.client.json.JsonString;
+</#if>
+
 <#if entity.additionalImportsEntity?has_content>
 <#list entity.additionalImportsEntity as additionalImport>
 import ${additionalImport};
@@ -56,6 +64,12 @@ as ifc>${ifc}<#if ifc_has_next>, </#if></#list></#if> {
 <#if property.notNull && complexTypes?seq_contains(property.propertyType)>
     /** Not-null value. */
 </#if>
+	<#if property.annotationKey??>
+ 	@Key("${property.annotationKey}")
+ 	</#if>
+ 	<#if property.hasJsonStringAnnotation>
+    @JsonString
+    </#if>
     private ${property.javaType} ${property.propertyName};
 </#list>
 
