@@ -29,6 +29,7 @@ public class ToMany {
     private Property[] sourceProperties;
     private final Property[] targetProperties;
     private final PropertyOrderList propertyOrderList;
+    private String keyAnnotation;
 
     public ToMany(Schema schema, Entity sourceEntity, Property[] sourceProperties, Entity targetEntity,
             Property[] targetProperties) {
@@ -62,6 +63,15 @@ public class ToMany {
 
     public String getName() {
         return name;
+    }
+
+    public String getKeyAnnotation() {
+        return keyAnnotation;
+    }
+
+    public void setKeyAnnotation(String keyAnnotation) {
+        this.keyAnnotation = keyAnnotation;
+        this.sourceEntity.setHasKeyAnnotation(true);
     }
 
     /**

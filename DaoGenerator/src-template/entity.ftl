@@ -81,6 +81,9 @@ as ifc>${ifc}<#if ifc_has_next>, </#if></#list></#if> {
     private transient ${entity.classNameDao} myDao;
 
 <#list entity.toOneRelations as toOne>
+    <#if toOne.keyAnnotation??>
+    @Key("${toOne.keyAnnotation}")
+    </#if>
     private ${toOne.targetEntity.className} ${toOne.name};
 <#if toOne.useFkProperty>
     private ${toOne.resolvedKeyJavaType[0]} ${toOne.name}__resolvedKey;
@@ -90,6 +93,9 @@ as ifc>${ifc}<#if ifc_has_next>, </#if></#list></#if> {
 
 </#list>
 <#list entity.toManyRelations as toMany>
+    <#if toMany.keyAnnotation??>
+    @Key("${toMany.keyAnnotation}")
+    </#if>
     private List<${toMany.targetEntity.className}> ${toMany.name};
 </#list>
 

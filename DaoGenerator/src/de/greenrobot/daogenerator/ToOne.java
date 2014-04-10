@@ -27,6 +27,7 @@ public class ToOne {
     private final boolean[] resolvedKeyUseEquals;
     private String name;
     private final boolean useFkProperty;
+    private String keyAnnotation;
 
     public ToOne(Schema schema, Entity sourceEntity, Entity targetEntity, Property[] fkProperties, boolean useFkProperty) {
         this.schema = schema;
@@ -68,6 +69,15 @@ public class ToOne {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getKeyAnnotation() {
+        return keyAnnotation;
+    }
+
+    public void setKeyAnnotation(String keyAnnotation) {
+        this.keyAnnotation = keyAnnotation;
+        this.sourceEntity.setHasKeyAnnotation(true);
     }
 
     public boolean isUseFkProperty() {
